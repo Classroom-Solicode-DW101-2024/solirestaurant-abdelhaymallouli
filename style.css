@@ -187,6 +187,7 @@ header .navbar a:hover {
     }
 }
 
+
 /* section 3 */
 
 .popular .box-container {
@@ -351,3 +352,4 @@ header .navbar a:hover {
 .loader-container.fade-out {
     top: -120%;
 }
+
