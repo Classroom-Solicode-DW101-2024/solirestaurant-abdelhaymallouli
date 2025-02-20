@@ -2,6 +2,7 @@
 
 :root {
     --blue: rgb(30, 48, 80);
+    --blue-hover: rgb(54, 85, 138);
 
 }
 
@@ -188,34 +189,34 @@ header .navbar a:hover {
 }
 
 
-/* section 3 */
+/* PLats */
 
-.popular .box-container {
+.Plats .box-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1.7rem;
+    margin-bottom: 30px;
 }
 
-.popular .box-container .box {
+.Plats .box-container .box {
     padding: 2rem;
     background: #fff;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
-    border: .1rem solid rgba(0, 0, 0, .3);
-    border-radius: .5rem;
+    border-radius: .7rem;
     text-align: center;
     flex: 1 1 40rem;
     position: relative;
 
 }
 
-.popular .box-container .box img {
+.Plats .box-container .box img {
     height: 25rem;
     object-fit: cover;
     width: 100%;
     border-radius: .5rem;
 }
 
-.popular .box-container .box .price {
+.Plats .box-container .box .price {
     position: absolute;
     top: 3rem;
     left: 3rem;
@@ -226,18 +227,34 @@ header .navbar a:hover {
     border-radius: .5rem;
 }
 
-.popular .box-container .box h3 {
+.Plats .box-container .box h3 {
     color: #333;
     font-size: 2.5rem;
     padding-top: 1rem;
 }
 
-.popular .box-container .box .stars i {
+.Plats .box-container .box .stars i {
     color: gold;
     font-size: 1.7rem;
     padding: 1rem .1rem;
 }
 
+.list-type {
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 20px;
+    
+}
+
+.list-type a {
+    margin-right: 10px;
+    color: #333;
+    font-size: 20px;
+}
+
+.list-type a:hover {
+    color: var(--blue-hover);
+}
 
 /* footer */
 .footer {
