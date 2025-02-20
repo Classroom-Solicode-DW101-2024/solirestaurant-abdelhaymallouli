@@ -146,7 +146,7 @@ header .navbar a:hover {
     gap: 1.5rem;
     min-height: 100vh;
     align-items: center;
-    background: url(img/home-bg.jpg) no-repeat;
+    background: url("img/home-bg.jpg") no-repeat;
     background-size: cover;
     background-position: center;
 }
@@ -204,7 +204,8 @@ header .navbar a:hover {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
     border-radius: .7rem;
     text-align: center;
-    flex: 1 1 40rem;
+    flex: 1 1 calc(33.33% - 1.7rem); /* Adjust width dynamically */
+    max-width: 40rem; 
     position: relative;
 
 }
@@ -233,8 +234,8 @@ header .navbar a:hover {
     padding-top: 1rem;
 }
 
-.Plats .box-container .box .stars i {
-    color: gold;
+.Plats .box-container .box .stars p {
+    color:#333;
     font-size: 1.7rem;
     padding: 1rem .1rem;
 }
