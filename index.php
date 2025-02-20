@@ -44,7 +44,7 @@ foreach ($plats as $plat) {
     <header>
         <a href="#" class="logo"><i class="fas fa-utensils"></i>M2l Restaurant</a>
         <nav class="navbar">
-            <a href="#order"><button class="btn0">Order Now</button></a>
+            <a href="#"><button class="btn0">Sign Up</button></a>
         </nav>
     </header>
 
@@ -66,16 +66,16 @@ foreach ($plats as $plat) {
     <h1 class="heading">Our <span>Popular</span> Foods</h1>
     
     <!-- Form with both selects and buttons -->
-    <div style="text-align: center; margin: 20px;">
-        <form method="get" action="">
-            <select name="categoriePlat">
+    <div class="form-filter">
+        <form class="form-select" method="get" action="">
+            <select  name="categoriePlat">
                 <option value="ALL">All Categories</option>
                 <option value="plat principal">Plat Principal</option>
                 <option value="entrée">Entrée</option>
                 <option value="dessert">Dessert</option>
             </select>
 
-            <select name="typeCuisine">
+            <select  name="typeCuisine">
                 <option value="ALL">All Cuisines</option>
                 <option value="Marocaine">Marocaine</option>
                 <option value="Chinoise">Chinoise</option>
@@ -84,8 +84,7 @@ foreach ($plats as $plat) {
                 <option value="Italienne">Italienne</option>
             </select>
 
-            <button type="submit" style="padding: 5px 15px; margin: 0 5px;">Filter</button>
-            <button type="reset" style="padding: 5px 15px; margin: 0 5px;">Reset</button>
+            <button class="button-filter" type="submit" style="">Filter</button>
         </form>
     </div>
 

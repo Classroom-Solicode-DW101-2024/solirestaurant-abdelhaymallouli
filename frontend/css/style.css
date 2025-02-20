@@ -250,22 +250,59 @@ header .navbar a:hover {
     padding: 1rem .1rem;
 }
 
-.list-type {
-    text-align: center;
-    text-decoration: none;
-    margin-bottom: 20px;
-    
+.form-filter {
+    text-align: center; 
+    margin: 30px;
+    padding: 30px;
 }
 
-.list-type a {
-    margin-right: 10px;
-    color: #333;
-    font-size: 20px;
+.form-select select {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.list-type a:hover {
-    color: var(--blue-hover);
+.button-filter {
+    display: inline-block;
+    padding: 12px 35px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: var(--blue);
+    border: 2px solid var(--blue);
+    color: white;
+    font-size: 1.7rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    transition: color 0.3s linear;
 }
+
+.button-filter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 100%;
+    background: white;
+    transition: width 0.3s linear;
+    z-index: -1;
+   
+}
+
+.button-filter:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+.button-filter:hover {
+    color: #000000;
+}
+
 
 /* footer */
 .footer {
