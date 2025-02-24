@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require 'config.php'; 
 
 // Get both selected values
@@ -25,8 +27,11 @@ $plats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $platsByCuisine = [];
 foreach ($plats as $plat) {
-    $platsByCuisine[$plat['TypeCuisine']][] = $plat;
+    $platsByCuisine[$plat['TypeCuisine']][] = $plat;  
 }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -42,18 +47,25 @@ foreach ($plats as $plat) {
 <body>
     <!-- header -->
     <header>
-        <a href="#" class="logo"><i class="fas fa-utensils"></i>M2l Restaurant</a>
-        <nav class="navbar">
-            <a href="#"><button class="btn0">Sign Up</button></a>
-        </nav>
-    </header>
+    <a href="index.php" class="logo"><i class="fas fa-utensils"></i>M2l Restaurant</a>
+    <nav class="navbar">
+        <?php if (isset($_SESSION['client_name'])) { ?>
+            <a href="#">Hello, <?= htmlspecialchars($_SESSION['client_name']) ?></a>
+            <a href="logout.php"><button class="btn0">Log Out</button></a>
+            <a href="order.php"><button class="btn0">Order</button></a> <!-- Order Button -->
+        <?php } else { ?>
+            <a href="sign-in.php"><button class="btn0">Sign Up</button></a>
+        <?php } ?>
+    </nav>
+</header>
+
 
     <!-- hero section -->
     <section class="home" id="home">
         <div class="content">
             <h3>Tasty Bites</h3>
             <p>Welcome to Tasty Bites, where every meal is a culinary masterpiece delivered straight to your door.</p>
-            <a href="/#order" class="btn">order now</a>
+            <a href="#PLats" class="btn">order now</a>
         </div>
         <div class="image">
             <img src="frontend/img/home-img.png" alt="">
@@ -62,7 +74,7 @@ foreach ($plats as $plat) {
 
 
     <!-- Select simple dial filters -->
-    <section class="Plats" id="popular">
+    <section class="Plats" id="PLats">
     <h1 class="heading">Our <span>Popular</span> Foods</h1>
     
     <!-- Form with both selects and buttons -->
@@ -100,7 +112,7 @@ foreach ($plats as $plat) {
                         <div class="stars">
                             <p>Categorie : <?= htmlspecialchars($plat['categoriePlat']) ?></p>
                         </div>
-                        <a href="/#order" class="btn">order now</a>
+                        <a href="order.php?add_to_order=<?= $plat['idPlat'] ?>" class="btn">order now</a>
                     </div>
                 <?php endforeach; ?>
             </div>

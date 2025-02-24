@@ -125,15 +125,16 @@ header .logo i {
     color: var(--blue);
 }
 
-/* header .navbar a {
-    font-size: 2rem;
-    margin-left: 2rem;
+.navbar a {
+    font-size: 20px;
+    text-align: center;
     color: #666;
+    background-color: yellow; /* Temporarily added to check visibility */
 }
 
-header .navbar a:hover {
+.navbar a:hover {
     color: var(--blue);
-} */
+}
 
 
 
