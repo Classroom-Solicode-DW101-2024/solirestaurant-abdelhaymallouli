@@ -16,3 +16,21 @@ function fadeOut(){
 }
 
 window.onload = fadeOut();
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const profileButton = document.getElementById("profileButton");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    profileButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // Close dropdown if clicking outside
+    document.addEventListener("click", function (event) {
+        if (!profileButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.style.display = "none";
+        }
+    });
+});

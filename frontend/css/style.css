@@ -125,15 +125,116 @@ header .logo i {
     color: var(--blue);
 }
 
+.navbar {
+    display: flex;
+    align-items: center;  /* Align all navbar elements */
+    gap: 20px; /* Add spacing between items */
+}
+
+.card-shopping {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.card-shopping img {
+    width: 24px; /* Adjust icon size */
+    height: 24px;
+}
+
+/* Red Circle for Cart Count */
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    width: 13px;
+    height: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
 .navbar a {
-    font-size: 20px;
+    font-size: 14px;
+    font-weight: bold;
     text-align: center;
     color: #666;
-    background-color: yellow; /* Temporarily added to check visibility */
+}
+
+.card-shopping {
+    align-items: center;
+    margin-right: 10px;
 }
 
 .navbar a:hover {
     color: var(--blue);
+}
+
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    padding: 10px;
+}
+
+.profile-img {
+    width: 40px;
+    object-fit: cover;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
+    border: 2px solid var(--blue);
+}
+
+
+.profile-btn i {
+    margin-left: 5px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 150px;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+    background: var(--blue);
+    color: white;
+}
+
+/* Show dropdown on hover */
+.profile-dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 
@@ -150,6 +251,7 @@ header .logo i {
     background: url(../img/home-bg.jpg) no-repeat;
     background-size: cover;
     background-position: center;
+    background-color: transparent;
 }
 
 .home .content {
@@ -385,13 +487,14 @@ header .logo i {
     color: var(--blue);
 }
 
+/* scroll-top */
 #scroll-top {
     position: fixed;
     top: -120%;
     right: 2rem;
     padding: .5rem 1.5rem;
     font-size: 4rem;
-    background: var(--red);
+    background: var(--blue);
     color: #ffffff;
     border-radius: .5rem;
     transition: .5s linear;

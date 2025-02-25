@@ -46,9 +46,8 @@ foreach ($_SESSION['order'] as $plat){
 </head>
 <body>
 
-<header>
-    <a href="index.php" class="logo"><i class="fas fa-utensils"></i>M2l Restaurant</a>
-</header>
+    <!-- header -->
+    <?php include 'header.php'; ?>
 
 <section class="order-summary">
     <h1>Your Order Summary</h1>
@@ -73,5 +72,8 @@ foreach ($_SESSION['order'] as $plat){
     <?php endif; ?>
 </section>
 
+
+    <!-- Footer -->
+    <?php include 'footer.php'; ?>
 </body>
 </html>
