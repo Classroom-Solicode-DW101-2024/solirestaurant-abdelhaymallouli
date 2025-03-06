@@ -1,79 +1,34 @@
 <?php
 session_start();
-require 'config.php';
 
-if (!isset($_SESSION['order'])) {
-    $_SESSION['order'] = [];
-}
-
-if (isset($_GET['add_to_order'])) {
-    $platId = $_GET['add_to_order'];
-    $stmt = $pdo->prepare("SELECT * FROM plat WHERE idPlat = ?");
-    $stmt->execute([$platId]);
-    $plat = $stmt->fetch();
-
-    if ($plat) {
-        $_SESSION['order'][] = $plat;
-    }
-}
-
-if (isset($_GET['remove_from_order'])) {
-    $platId = $_GET['remove_from_order'];
-    foreach ($_SESSION['order'] as $key => $plat) {
-        if ($plat['idPlat'] == $platId) {
-            unset($_SESSION['order'][$key]);
+if (isset($_GET['remove'])) {
+    $id = $_GET['remove'];
+    foreach ($_SESSION['cart'] as $key => $item) {
+        if ($item['id'] == $id) {
+            unset($_SESSION['cart'][$key]);
             break;
-
         }
     }
+    $_SESSION['cart'] = array_values($_SESSION['cart']); // Re-index array
+    header("Location: index.php");
+    exit();
 }
 
-
-$totalPrice = 0;
-foreach ($_SESSION['order'] as $plat){
-    $totalPrice += $plat['prix'];
+if (isset($_GET['update']) && isset($_GET['id'])) {
+    $id = $_GET['id'];
+    foreach ($_SESSION['cart'] as &$item) {
+        if ($item['id'] == $id) {
+            if ($_GET['update'] == "increase") {
+                $item['quantity'] += 1;
+            } elseif ($_GET['update'] == "decrease" && $item['quantity'] > 1) {
+                $item['quantity'] -= 1;
+            }
+            break;
+        }
+    }
+    header("Location: index.php");
+    exit();
 }
 
-?>
+ ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="frontend/css/style.css">
-    <title>Your Order</title>
-</head>
-<body>
-
-    <!-- header -->
-    <?php include 'header.php'; ?>
-
-<section class="order-summary">
-    <h1>Your Order Summary</h1>
-
-    <?php if (count($_SESSION['order']) > 0): ?>
-        <div class="order-items">
-            <?php foreach ($_SESSION['order'] as $plat): ?>
-                <div class="order-item">
-                    <h3><?= htmlspecialchars($plat['nomPlat']) ?> - <?= htmlspecialchars($plat['prix']) ?> DH</h3>
-                    <a href="order.php?remove_from_order=<?= $plat['idPlat'] ?>" class="btn">Remove</a>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <div class="order-total">
-            <p>Total: <?= $totalPrice ?> DH</p>
-        </div>
-        <form method="POST" action="confirm_order.php">
-            <button type="submit" class="btn">Confirm Order</button>
-        </form>
-    <?php else: ?>
-        <p>Your cart is empty. Add some items to your order!</p>
-    <?php endif; ?>
-</section>
-
-
-    <!-- Footer -->
-    <?php include 'footer.php'; ?>
-</body>
-</html>
